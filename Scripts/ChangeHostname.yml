@@ -1,0 +1,25 @@
+---
+- name: Update the Raspberry Pi 5 OS and reboot
+  hosts: raspberrypi
+  become: true
+  tasks:    
+    #
+    # Change the hostname if it has been defined.
+    #
+    - name: Changing the hostname (if defined)
+      command: raspi-config nonint do_hostname {{ hostname }}
+      when: hostname is defined and hostname is string
+
+    #
+    # Reboot to apply changes.
+    #
+    # Note that we timeout immediately after the reboot command is issued as we
+    # have changed the hostname and the connection cannot be made to the original
+    # hostname.
+    #
+    - name: Reboot the Raspberry Pi
+      reboot:
+        msg: "Immediate reboot initiated by Ansible"
+        reboot_timeout: 1
+        pre_reboot_delay: 0
+        post_reboot_delay: 0

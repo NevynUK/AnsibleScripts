@@ -1,0 +1,18 @@
+- debug:
+    msg: "my_var is now {{ my_var }}"
+
+# - debug:
+#     msg: |-
+#     {
+#       {%- if hostname is defined and hostname is string -%}
+#            "hostname {{ hostname }}"
+#       {%- endif -%}
+#     }
+
+- ansible.builtin.debug: 
+    msg: "Hostname is {{ hostname }}"
+  when: hostname is defined and hostname is string
+
+- ansible.builtin.debug:
+    msg: "Hostname is undefined"
+  when: hostname is undefined

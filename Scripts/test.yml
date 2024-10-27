@@ -1,0 +1,24 @@
+---
+- hosts: localhost
+  connection: local
+
+  vars:
+    var1: "test1"
+    var2: "test2"
+    var3: "{{ var1 }}"
+
+  tasks:
+    - debug: var=var3
+    - set_fact:
+        var3: "{{ var2 }}"
+    - debug:
+        msg: "var3 is now {{ var3 }}"
+
+    - include_tasks: tasks.yml
+      vars:
+          my_var: "{{ var1 }}"
+      when: nvme_duo
+
+    - include_tasks: tasks.yml
+      vars:
+          my_var: false

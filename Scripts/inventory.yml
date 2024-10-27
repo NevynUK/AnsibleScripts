@@ -1,0 +1,2 @@
+[raspberrypi]
+testserver500.local ansible_user=clusteruser ansible_ssh_pass=$CLUSTER_PASSWORD ansible_python_interpreter=/usr/bin/python3

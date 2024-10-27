@@ -1,0 +1,5 @@
+---
+ansible_user: clusteruser
+hostname: TestServer1000
+nvme_duo: true
+format_nvmebase: true
