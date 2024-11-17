@@ -11,3 +11,4 @@ Collection of useful Ansible scripts including a number from the [Raspberry Pi N
 | InstallESPIDF.yml | Install the ESP-IDF software development kit |
 | InstallSamba.yml | Install Samba |
 | InstallRust.yml | Install and configure `rust` and `cargo` |
+| InstallRPiConnect.yml | Install Raspberry Pi Connect |

@@ -1,0 +1,15 @@
+#
+# Install necessary software packages.
+#
+- name: Install rpi-connect-lite
+  apt:
+    name:
+      - rpi-connect-lite
+    state: latest
+  become: true
+
+- name: Enable Raspberry Pi rpi-connect-lite service
+  shell: rpi-connect on
+
+- name: Enable lingering
+  shell: loginctl enable-linger
