@@ -1,3 +1,17 @@
+#
+# Enable PCIe gen3 for the NVMe drive on a Pimoroni NVMe Base.  We do not do this
+# on the NVMEBse Duo as it is not supported.
+#
+- name: Ensure pciex1_gen3 is enabled in /boot/firmware/config.txt
+  blockinfile:
+    path: /boot/firmware/config.txt
+    marker: "# {mark} ANSIBLE MANAGED BLOCK"
+    block: |
+      dtparam=pciex1_gen=3
+    insertafter: '^\[all\]$'
+    create: yes
+  when: (not nvme_duo) and (nvmebase_device_name == 'nvme0n1')
+
 - name: Format the NVMe drive {{ nvmebase_device_name }}
   command: mkfs.ext4 /dev/{{ nvmebase_device_name }} -L Data
   when: format_nvmebase | bool
