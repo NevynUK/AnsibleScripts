@@ -8,6 +8,12 @@ ansible_user: clusteruser
 hostname: TestServer1000
 nvme_duo: false
 format_nvmebase: true
+esp_idf_installation_directory: ~/esp
+esp_idf_branch: release/v5.3
+install_nvmebase: true
+install_esp_idf: true
+install_samba: true
+install_rust: true
 ```
 
 ## ansible_user: clusteruser
@@ -29,3 +35,29 @@ This determines if the NVMe drive should be formatted (have a new file system cr
 Set this to <i>true</i> for new drives (or drives where the data is to be discarded.  Set this to <i>false</i> to preserve the contents of the drive.
 
 Setting <i>format_nvmebase</i> to <i>false</i> for an unformatted (new) drive will cause the <i>ConfigureNVMeBase.yml</i> script to fail.
+
+## ESP-IDF Related Variables
+
+### esp_idf_installation_directory: ~/esp
+
+Installation location for the ESP-IDF and related tools
+
+### esp_idf_branch: release/v5.3
+
+ESP-IDF branch to check out.
+
+## install_nvmebase: true
+
+Install the NVME base?
+
+## install_esp_idf: true
+
+Install the ESP-IDF.
+
+## install_samba: true
+
+Install and configure Samba?
+
+## install_rust: true
+
+Install rust and cargo.

@@ -3,3 +3,9 @@ ansible_user: clusteruser
 hostname: TestServer1000
 nvme_duo: true
 format_nvmebase: false
+esp_idf_installation_directory: ~/esp
+esp_idf_branch: release/v5.3
+install_nvmebase: true
+install_esp_idf: true
+install_samba: true
+install_rust: true
